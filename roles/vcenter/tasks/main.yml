@@ -1,0 +1,19 @@
+  - set_fact:
+      vcenter_host: "sintra01.orizon.local"
+      folder: "/"
+      cluster: CORP-PRD-WINDOWS
+      dns1_servers:
+        - 172.22.10.155
+        - 172.22.10.95
+        - 172.18.0.155
+    when: datacenter == "Alphaville"
+
+  - set_fact:
+      vcenter_host: "rochester01.orizon.local"
+      cluster: "TIVIT-SP-WINDOWS"
+      folder: "/"
+      dns1_servers:
+        - 172.18.0.155
+        - 172.18.0.156
+        - 172.18.66.13
+    when: datacenter == "SP"

@@ -1,0 +1,45 @@
+- vmware_guest:
+    hostname: "{{ vcenter_host }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: no
+    folder: "{{folder}}"
+    datacenter: "{{ datacenter }}"
+    cluster: "{{ cluster }}"
+    name: "{{ hostname | upper }}"
+    state: poweredon
+    template: "{{ template }}"
+    hardware:
+        memory_mb: "{{ memory_mb }}"
+        num_cpus: "{{ cpu }}"
+        hotadd_cpu: True
+        hotremove_cpu: True
+        hotadd_memory: True
+    networks:
+    - name: "{{ vlan }}"
+      ip: "{{ip}}"
+      netmask: "{{ netmask }}"
+      gateway: "{{ gateway }}"
+      start_connected: True
+      domain: "{{ domain }}"
+      dns_servers: "{{ dns1_servers }}"
+      type: static
+    customization:
+      autologon: yes
+      fullname: "Administrator"
+      dns_servers: "{{ dns1_servers }}"
+      joindomain: "{{ domain }}"
+      password: "Mudar@321"
+      domainadmin: "svc_adselfservice@orizon.local"
+      domainadminpassword: "#sf19@AD553"
+      domain: "{{ domain }}"
+      dns_suffix: orizon.local,polimed.dom,prod.datacenter
+      hostname: "{{ hostname | upper }}"
+      device_type: vmxnet3
+      wait_for_ip_address: yes
+      runonce:
+      - powershell.exe -ExecutionPolicy Unrestricted -File C:\Windows\Temp\ConfigureRemotingForAnsible.ps1 -ForceNewSSLCert -EnableCredSSP
+  delegate_to: localhost
+
+# - pause:
+#     minutes: 10

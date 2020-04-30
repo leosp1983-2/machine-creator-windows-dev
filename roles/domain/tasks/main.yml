@@ -1,0 +1,4 @@
+  - name: run netstat and return Ethernet stats
+    win_command: netstat -e
+    register: netstat
+  - debug: var=netstat

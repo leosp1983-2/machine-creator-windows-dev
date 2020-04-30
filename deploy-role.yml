@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  gather_facts: no
+  connection: local
+  
+  tasks:
+  - name: "Vcenter escolhido para provisionamento da virtual machine {{ datacenter }}"
+    include_role:
+      name: vcenter
+  
+  - name: "provisionamento virtual machine no Vcenter {{ datacenter }}" 
+    include_role:
+      name: machine
+  
+  - name: teste de inventory 
+    include_role:
+      name: inventory
+  
+  - name: "Ingressando a virtual machine no domínio" 
+    include_role:
+      name: domain
+
+  # - name: Enviando logs from:lorca 03 04 to:orzfsclprd01.orizon.local 
+  #   include_role:
+  #     name: lorca

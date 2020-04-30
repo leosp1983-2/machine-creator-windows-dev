@@ -1,0 +1,32 @@
+---
+ansible_user: administrator
+ansible_password: Mudar@321
+ansible_port: 5986
+ansible_connection: winrm
+ansible_winrm_server_cert_validation: ignore
+
+############################## VCENTER ##############################
+
+vcenter_host: sintra01.orizon.local
+vcenter_username: SVC_Ansible_Tower@orizon.local
+vcenter_password: ""
+
+datacenter: ""
+hostname: ""
+template: "base-win-2012R2"
+datastore: "3PAR-DRS-CORP01"
+cluster: "CORP-PRD-WINDOWS"
+annotation: ""
+domain: "orizon.local"
+
+############################## HARDWARE ##############################
+
+memory_mb: 4096
+cpu: 2
+
+############################## IPAM ##############################
+
+vlan: "ID26-DEV-ALPHAVILLE-172.22.26.0"
+ip: "172.22.26.10"
+netmask: "255.255.255.0"
+gateway: "172.22.26.1"

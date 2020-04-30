@@ -1,0 +1,15 @@
+  - name: Add tower inventory
+    tower_inventory:
+      name: "{{hostname}}"
+      description: "{{annotation}}"
+      organization: "Orizon"
+      state: present
+    delegate_to: localhost
+
+  - name: Adiciona o host no tower
+    tower_host:
+      name: "{{ip}}"
+      description: "{{annotation}}"
+      inventory: "{{hostname}}"
+      state: present
+    delegate_to: localhost
