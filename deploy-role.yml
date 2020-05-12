@@ -10,7 +10,7 @@
   
   - name: "provisionamento virtual machine no Vcenter {{ datacenter }}" 
     include_role:
-      name: machinetete
+      name: machine
   
   - name: teste de inventory 
     include_role:
